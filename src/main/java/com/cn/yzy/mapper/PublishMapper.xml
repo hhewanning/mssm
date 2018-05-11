@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.yzy.mapper.PublishMapper">
+	<resultMap id="publishMapper" type="com.cn.yzy.pojo.Publish">
+		<id property="pid" column="pid" />
+		<result property="pname" column="pname" />
+	</resultMap>
+
+	<select id="getPublish" resultMap="publishMapper">
+		SELECT c.pid,c.pname FROM publish c
+	</select>
+	<select id="getcount" resultType="int">
+	select count(*) from publish
+	</select>
+	<insert id="savePublish" parameterType="Map">
+		INSERT INTO publish (pname) VALUES (#{pname});
+	</insert>
+	<select id="findByName" resultMap="publishMapper" parameterType="Map">
+		SELECT c.pid,c.pname FROM publish c where pname = #{pname}
+	</select>
+	
+	<select id="findById" resultMap="publishMapper">
+		SELECT c.pid,c.pname FROM publish c where pid = #{pid}
+	</select>
+	<update id="updatePublish" parameterType="Map">
+	update publish set pname=#{pname} where pid =#{pid}
+	</update>
+	<delete id="delPublish" parameterType="Map">
+	delete from publish where pid =#{pid}
+	</delete>
+</mapper>

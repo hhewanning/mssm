@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.yzy.mapper.CategoryMapper">
+	<resultMap id="categoryMapper" type="com.cn.yzy.pojo.Category">
+		<id property="cid" column="cid" />
+		<result property="cname" column="cname" />
+	</resultMap>
+
+	<select id="getCategory" resultMap="categoryMapper">
+		SELECT c.cid,c.cname FROM category c
+	</select>
+	<insert id="saveCategory" parameterType="Map">
+		INSERT INTO category (cname) VALUES (#{cname});
+	</insert>
+	<select id="findByName" resultMap="categoryMapper">
+		SELECT c.cid,c.cname FROM category c where cname = #{cname}
+	</select>
+	
+	<select id="findById" resultMap="categoryMapper">
+		SELECT c.cid,c.cname FROM category c where cid = #{cid}
+	</select>
+	<update id="updateCategory" parameterType="Map">
+	update category set cname=#{cname} where cid =#{cid}
+	</update>
+	<delete id="delCategory" parameterType="Map">
+	delete from category where cid =#{cid}
+	</delete>
+</mapper>

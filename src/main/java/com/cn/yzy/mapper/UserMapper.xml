@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">   
+<mapper namespace="com.cn.yzy.mapper.UserMapper">   
+    <resultMap id="userMapper" type="com.cn.yzy.pojo.User">   
+        <id property="id" column="aid" />   
+        <result property="userName" column="userName" />   
+        <result property="password" column="password" />   
+    </resultMap>   
+       
+    <select id="getUsers" resultMap="userMapper">   
+        select aid,userName,password from admin       
+    </select> 
+    <insert id="xxxUsers" parameterType="int">
+        INSERT INTO t_user (id,userName,password) VALUES (3,'lisi','123456');
+    </insert>
+</mapper>

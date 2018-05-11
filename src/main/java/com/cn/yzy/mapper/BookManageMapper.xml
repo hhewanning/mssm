@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.yzy.mapper.BookManageMapper">
+	<resultMap id="bookManageMapper" type="com.cn.yzy.pojo.BookManage">
+		<id property="bid" column="bid" />
+		<result property="bname" column="bname" />
+		<result property="author" column="author" />
+		<result property="count" column="count" />
+		<result property="image" column="image" />
+		<result property="price" column="price" />
+		<result property="dayprice" column="dayprice" />
+		<result property="cid" column="cid" />
+		<result property="pid" column="pid" />
+		<result property="isdel" column="isdel" />
+
+	</resultMap>
+
+	<select id="getBookManage" resultMap="bookManageMapper">
+		SELECT
+			c.author,
+			c.bid,
+			c.bname,
+			c.cid,
+			c.count,
+			c.dayprice,
+			c.image,
+			c.isdel,
+			c.pid,
+			c.price
+		FROM
+			book c
+	</select>
+	<!-- 分类查询下拉框列表 -->
+	<!-- <select id="getCategoryList" resultMap="bookManageMapper">
+		SELECT
+		a.cid, a.cname FROM
+		category a
+	</select> -->
+</mapper>
